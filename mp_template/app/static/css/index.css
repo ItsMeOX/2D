@@ -17,6 +17,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  background-color: rgba(124, 124, 124, 0.1);
 }
 
 .section_container {
