@@ -5,17 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
-flask-login = "*"
-flask-migrate = "*"
-flask-sqlalchemy = "*"
-flask-wtf = "*"
 transcrypt = "*"
-bootstrap-flask = "*"
-importlib-resources = "*"
-colorama = "*"
-Werkzeug = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "*"
