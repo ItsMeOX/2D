@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block app_content %} {% block css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+{% endblock %}
+
+<div class="problem_statement_container">
+  <div class="section_title_container">
+    <img
+      src="{{ url_for('static', filename='images/problem_statement.png') }}"
+      width="25px"
+      height="25px"
+    />
+    <h2 class="section_title">Our Problem Statement</h2>
+  </div>
+  <p class="paragraph">
+    food insecurity in south africa - due to climate change
+  </p>
+</div>
+
+<div class="section_container">
+  <div class="section_title_container">
+    <img
+      src="{{ url_for('static', filename='images/model.png') }}"
+      width="25px"
+      height="25px"
+    />
+    <h2 class="section_title">Our Model</h2>
+  </div>
+  <hr class="section_title_underline" />
+  <p class="paragraph">
+    food insecurity in south africa - due to climate change
+  </p>
+</div>
+
+<img
+  src="{{ url_for('static', filename='images/gear.png') }}"
+  class="gear_bg_cw"
+  style="width: 200px; right: -80px; top: -40px"
+/>
+<img
+  src="{{ url_for('static', filename='images/gear.png') }}"
+  class="gear_bg_ccw"
+  style="width: 100px; right: 100px; top: -50px"
+/>
+<img
+  src="{{ url_for('static', filename='images/gear.png') }}"
+  class="gear_bg_ccw"
+  style="width: 100px; left: -60px; top: 220px"
+/>
+
+{% block js %}
+<script>
+  window.addEventListener('scroll', function () {
+    let scrollY = window.scrollY;
+    if (scrollY > 300) {
+      document.body.style.backgroundColor = '#1C2833'; // Dark gray
+    } else {
+      document.body.style.backgroundColor = '#2A3044'; // Light gray
+    }
+  });
+</script>
+{% endblock %} {% endblock %}

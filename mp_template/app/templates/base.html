@@ -1,0 +1,39 @@
+{% block navbar %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    {% block css %} {% endblock %}
+  </head>
+  <div class="container">
+    <nav class="nav">
+      <div>
+        <h1 class="title">{{title}}</h1>
+      </div>
+    </nav>
+    {% endblock %} {% block content %}
+    <div>
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div>{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {% block app_content %}{% endblock
+      %}
+    </div>
+    {% endblock %} {% block scripts %}
+  </div>
+  <script type="module">
+    import * as library from './static/__target__/clientlibrary.js';
+    window.library = library;
+  </script>
+  {% block js %} {% endblock %}
+</html>
+{% endblock %}

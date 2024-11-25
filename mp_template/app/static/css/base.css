@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+@keyframes dropDown {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.title {
+  animation: dropDown 0.5s ease-out forwards;
+  text-align: center;
+}
+
+.nav {
+  margin-bottom: 60px;
+}
