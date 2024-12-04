@@ -1,0 +1,18 @@
+{% macro slider(title, data_target, data_min_x, data_max_x, data_grad,
+data_yinter, step) -%}
+<div class="slider_container">
+  <span class="slider_title">{{title}}</span>
+  <input
+    data-target="{{data_target}}"
+    data-min-x="{{data_min_x}}"
+    data-max-x="{{data_max_x}}"
+    data-gradient="{{data_grad}}"
+    data-yIntercept="{{data_yinter}}"
+    type="range"
+    class="slider"
+    min="{{data_min_x}}"
+    max="{{data_max_x}}"
+    step="{{step}}"
+  />
+</div>
+{%- endmacro %}

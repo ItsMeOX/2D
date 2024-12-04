@@ -1,0 +1,19 @@
+.graphs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.graph_container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 5px;
+  align-items: center;
+}
+
+.graph {
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0px -1px 17.2px rgba(231, 231, 231, 0.25);
+}

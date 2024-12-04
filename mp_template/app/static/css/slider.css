@@ -1,0 +1,40 @@
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slider_container {
+  display: flex;
+  align-items: center;
+}
+
+.slider_box {
+  width: 100%;
+}
+
+.slider {
+  border: 1px solid red;
+  width: 100%;
+}
+
+.slider_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+}
+
+.slider_label_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider_label {
+  font-size: 0.7rem;
+  margin: 0;
+  color: rgb(177, 176, 176);
+}

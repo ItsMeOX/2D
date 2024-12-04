@@ -3,6 +3,14 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='css/index.css') }}"
 />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/graph.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/slider.css') }}"
+/>
 {% endblock %}
 
 <div class="problem_statement_container">
@@ -15,7 +23,9 @@
     <h2 class="section_title">Our Problem Statement</h2>
   </div>
   <p class="paragraph">
-    food insecurity in south africa - due to climate change
+    How might we use climate, economic, and sociological data to predict
+    malnutrition trends in people in Afghanistan and South Africa, to suggest
+    policies to help tackle the issue of food insecurity.
   </p>
 </div>
 
@@ -30,7 +40,8 @@
   </div>
   <hr class="section_title_underline" />
   <p class="paragraph">
-    food insecurity in south africa - due to climate change
+    Our model predicts the number of malnorished people (in million) from
+    different features.
   </p>
 </div>
 
@@ -50,7 +61,134 @@
   style="width: 100px; left: -60px; top: 220px"
 />
 
+<div class="graphs">
+  <div class="graph_container">
+    <canvas
+      id="graph-temperature"
+      width="400"
+      height="250"
+      class="graph"
+    ></canvas>
+    <span class="graph_title">No. of malnorished people vs temperature</span>
+  </div>
+  <div class="graph_container">
+    <canvas
+      id="graph-precipitation"
+      width="400"
+      height="250"
+      class="graph"
+    ></canvas>
+    <span class="graph_title">No. of malnorished people vs precipitation</span>
+  </div>
+  <div class="graph_container">
+    <canvas id="graph-ppi" width="400" height="250" class="graph"></canvas>
+    <span class="graph_title">No. of malnorished people vs ppi</span>
+  </div>
+  <div class="graph_container">
+    <canvas id="graph-land" width="400" height="250" class="graph"></canvas>
+    <span class="graph_title">No. of malnorished people vs Arable land</span>
+  </div>
+</div>
+
+<div class="predicted_container">
+  <span>The predicted number of malnorished people (in million):</span>
+  <span class="predicted_value">12.2</span>
+</div>
+
+<div class="sliders">
+  <div class="slider_container">
+    <span class="slider_title">Temperature (Celcicus)</span>
+    <div class="slider_box">
+      <input
+        data-target="graph-temperature"
+        data-min-x="10"
+        data-max-x="45"
+        data-gradient="1.58883917"
+        data-yIntercept="5.50322425"
+        type="range"
+        class="slider"
+        min="10"
+        max="45"
+        step="0.1"
+        value="20.477"
+      />
+      <div class="slider_label_container">
+        <label class="slider_label">10</label>
+        <label class="slider_label">45</label>
+      </div>
+    </div>
+  </div>
+  <div class="slider_container">
+    <span class="slider_title">Precipitation (mm)</span>
+    <div class="slider_box">
+      <input
+        data-target="graph-precipitation"
+        data-min-x="1"
+        data-max-x="900"
+        data-gradient="0.73892263"
+        data-yIntercept="5.50322425"
+        type="range"
+        class="slider"
+        min="1"
+        max="900"
+        step="0.1"
+        value="339.213026"
+      />
+      <div class="slider_label_container">
+        <label class="slider_label">1</label>
+        <label class="slider_label">900</label>
+      </div>
+    </div>
+  </div>
+  <div class="slider_container">
+    <span class="slider_title">PPI</span>
+    <div class="slider_box">
+      <input
+        data-target="graph-ppi"
+        data-min-x="20"
+        data-max-x="150"
+        data-gradient="-1.41078702"
+        data-yIntercept="5.50322425"
+        type="range"
+        class="slider"
+        min="20"
+        max="150"
+        step="0.1"
+        value="90.56"
+      />
+      <div class="slider_label_container">
+        <label class="slider_label">20</label>
+        <label class="slider_label">150</label>
+      </div>
+    </div>
+  </div>
+  <div class="slider_container">
+    <span class="slider_title">Arable land (1000ha)</span>
+    <div class="slider_box">
+      <input
+        data-target="graph-land"
+        data-min-x="6000"
+        data-max-x="13000"
+        data-gradient="-2.75038817"
+        data-yIntercept="5.50322425"
+        type="range"
+        class="slider"
+        min="6000"
+        max="13000"
+        step="0.5"
+        value="7794"
+      />
+      <div class="slider_label_container">
+        <label class="slider_label">6000</label>
+        <label class="slider_label">13000</label>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% block js %}
+<script src="{{ url_for('static', filename='script/graph.js') }}"></script>
+<script src="{{ url_for('static', filename='script/slider.js') }}"></script>
 <script>
   window.addEventListener('scroll', function () {
     let scrollY = window.scrollY;
