@@ -1,7 +1,12 @@
+// Getting all the slider elements
 const sliders = document.querySelectorAll('.slider');
+
+// Getting the predicted value element
 const predicted_value = document.querySelector('.predicted_value');
 
 function getAttribute(element, attribute) {
+  // Helper function to get attribute from given element
+
   return parseFloat(element.getAttribute(attribute));
 }
 
@@ -9,6 +14,7 @@ function normalize_z(input, mean, std) {
   return (input - mean) / std;
 }
 
+// Parameters used for training data
 const parameters = {
   precipitation: {
     mean: 2.57399078e-3,
@@ -29,6 +35,9 @@ const parameters = {
 };
 
 function calcPredVal() {
+  // Function to calculate the predicted value (number of malnorished people)
+
+  // Getting the slider elements
   const precipitation_elm = document.querySelector(
     '[data-target="graph-precipitation"]'
   );
@@ -44,11 +53,13 @@ function calcPredVal() {
   const ppi_grad = getAttribute(ppi_elm, 'data-gradient');
   const arable_land_grad = getAttribute(arable_land_elm, 'data-gradient');
 
+  // Getting the value of the slider elements
   const precipitation = precipitation_elm.value;
   const temperature = temperature_elm.value;
   const ppi = ppi_elm.value;
   const arable_land = arable_land_elm.value;
 
+  // Normalizing the values like we did in training phase
   const precipitation_z = normalize_z(
     1 / precipitation,
     parameters['precipitation']['mean'],
@@ -70,6 +81,7 @@ function calcPredVal() {
     parameters['arable_land']['std']
   );
 
+  // Calculating the predicted value
   const result =
     y_intercept +
     precipitation_z * precipitation_grad +
@@ -80,6 +92,8 @@ function calcPredVal() {
   return result.toFixed(7);
 }
 
+// For each sliders, 
+// add input event listener, so that when slider is moved, we update the respective graphs
 sliders.forEach((slider) => {
   const graphId = slider.getAttribute('data-target');
   const minX = getAttribute(slider, 'data-min-x');

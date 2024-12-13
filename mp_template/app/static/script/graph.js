@@ -1,4 +1,15 @@
 function drawGraph(ctx, startX, endX, currX, m, b, mean, std) {
+  // ctx: context of canvas
+  // startX: starting X of slider
+  // endX: ending X of slider
+  // currX: current X of slider
+  // m: gradient
+  // b: y-intercept
+  // mean: mean used for training
+  // std: std used for training
+
+  // Function to draw on canvas given parameters
+
   const canvas = ctx.canvas;
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
@@ -60,13 +71,11 @@ function drawGraph(ctx, startX, endX, currX, m, b, mean, std) {
   ctx.shadowColor = 'transparent';
   ctx.shadowBlur = 0;
 
-  // Add labels to the X-axis
-  //   ctx.fillStyle = 'black';
+  // Add coordinate labels to current point
   ctx.font = '12px Inter';
   const normalized_x = normalize_z(currX, mean, std);
   let predicted_y = normalized_x * m + b;
   predicted_y = predicted_y.toFixed(7);
-
   ctx.fillText(
     '(' + currX + ', ' + predicted_y + ')',
     scaledCurrX,
@@ -84,11 +93,24 @@ function updateGraph(
   mean,
   std
 ) {
+  // graphId: id of canvas element
+  // startX: starting X of slider
+  // endX: ending X of slider
+  // currX: current X of slider
+  // m: gradient
+  // b: y-intercept
+  // mean: mean used for training
+  // std: std used for training
+
+  // Function to update canvas when slider is moved
+
   const canvas = document.getElementById(graphId);
   const graphCtx = canvas.getContext('2d');
   drawGraph(graphCtx, minX, maxX, currX, gradient, yIntercept, mean, std);
 }
 
 function normalize_z(input, mean, std) {
+  // Function for normalizing data
+  
   return (input - mean) / std;
 }

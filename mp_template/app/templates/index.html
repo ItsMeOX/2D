@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% block app_content %} {% block css %}
+{% extends "base.html" %} 
+
+{% block app_content %} 
+{% block css %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/index.css') }}"
@@ -13,6 +16,7 @@
 />
 {% endblock %}
 
+<!-- problem statement part -->
 <div class="problem_statement_container">
   <div class="section_title_container">
     <img
@@ -29,6 +33,7 @@
   </p>
 </div>
 
+<!-- our model part -->
 <div class="section_container">
   <div class="section_title_container">
     <img
@@ -45,6 +50,7 @@
   </p>
 </div>
 
+<!-- background gears on top of the page -->
 <img
   src="{{ url_for('static', filename='images/gear.png') }}"
   class="gear_bg_cw"
@@ -61,6 +67,7 @@
   style="width: 100px; left: -60px; top: 220px"
 />
 
+<!-- graphs -->
 <div class="graphs">
   <div class="graph_container">
     <canvas
@@ -90,11 +97,13 @@
   </div>
 </div>
 
+<!-- predicted value (no. of malnorished people) -->
 <div class="predicted_container">
   <span>The predicted number of malnorished people (in million):</span>
   <span class="predicted_value">12.2</span>
 </div>
 
+<!-- sliders -->
 <div class="sliders">
   <div class="slider_container">
     <span class="slider_title">Temperature (Celcicus)</span>
@@ -190,6 +199,7 @@
 <script src="{{ url_for('static', filename='script/graph.js') }}"></script>
 <script src="{{ url_for('static', filename='script/slider.js') }}"></script>
 <script>
+  // script for changing background color when scrolling
   window.addEventListener('scroll', function () {
     let scrollY = window.scrollY;
     if (scrollY > 300) {
